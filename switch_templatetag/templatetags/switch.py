@@ -53,9 +53,6 @@ def switch(parser, token):
 
 @register.tag
 def case(parser, token):
-    """
-    Case tag. Used only inside ``{% switch %}`` tags, so see above for those docs.
-    """
     args = token.split_contents()
 
     # We deliberately allow {% case %} (ie. match nothing)
