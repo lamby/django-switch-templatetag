@@ -2,7 +2,6 @@ from django import template
 
 register = template.Library()
 
-# from django snippets: http://www.djangosnippets.org/snippets/300/
 @register.tag
 def switch(parser, token):
     """
