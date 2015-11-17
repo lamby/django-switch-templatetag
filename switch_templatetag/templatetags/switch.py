@@ -62,7 +62,7 @@ def case(parser, token):
     assert len(args) >= 1
 
     # Same dance as above, except this time we care about all the child nodes
-    children = parser.parse(("endcase",))
+    children = parser.parse(('endcase',))
 
     parser.delete_first_token()
 
