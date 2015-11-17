@@ -12,6 +12,7 @@ def switch(parser, token):
         {% case "eggs" %}...{% endcase %}
         {% default %}
           No case matched.
+        {% enddefault %}
       {% endswitch %}
 
     Note that ``{% case %}`` arguments can be variables if you like (as can
@@ -25,6 +26,7 @@ def switch(parser, token):
         {% case "eggs" %}...{% endcase %}
         {% default %}
           {% error %}
+        {% enddefault %}
       {% endswitch %}
 
     """
@@ -43,7 +45,9 @@ def switch(parser, token):
     default = template.NodeList()
 
     if token.contents == 'default':
-        default = parser.parse(('endswitch',))
+        default = parser.parse(('enddefault',))
+        parser.delete_first_token()
+        parser.parse(('endswitch',))
         parser.delete_first_token()
 
     # We just care about case children; all other direct children get ignored.
