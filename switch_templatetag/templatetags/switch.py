@@ -7,12 +7,12 @@ def switch(parser, token):
     """
     Switch tag.  Usage::
 
-        {% switch meal %}
-            {% case "spam" %}...{% endcase %}
-            {% case "eggs" %}...{% endcase %}
-            {% default %}
-              No case matched.
-        {% endswitch %}
+      {% switch meal %}
+        {% case "spam" %}...{% endcase %}
+        {% case "eggs" %}...{% endcase %}
+        {% default %}
+          No case matched.
+      {% endswitch %}
 
     Note that ``{% case %}`` arguments can be variables if you like (as can
     switch arguments, buts that's a bit silly).
@@ -20,13 +20,17 @@ def switch(parser, token):
     The default case is optional. If you wish to fail if nothing matched, you
     can use::
 
-        {% switch meal %}
-            {% default %}
-              {% error %}
-        {% endswitch %}
+      {% switch meal %}
+        {% case "spam" %}...{% endcase %}
+        {% case "eggs" %}...{% endcase %}
+        {% default %}
+          {% error %}
+      {% endswitch %}
+
     """
     # Parse out the arguments.
     args = token.split_contents()
+
     if len(args) != 2:
         raise template.TemplateSyntaxError(
             "%s tag takes exactly 1 argument." % args[0]
@@ -37,6 +41,7 @@ def switch(parser, token):
 
     token = parser.next_token()
     default = template.NodeList()
+
     if token.contents == 'default':
         default = parser.parse(('endswitch',))
         parser.delete_first_token()
@@ -105,4 +110,5 @@ class CaseNode(template.Node):
         """
         Render this particular case, which means rendering its child nodes.
         """
+
         return self.childnodes.render(context)
