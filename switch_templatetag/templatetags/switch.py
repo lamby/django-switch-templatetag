@@ -5,7 +5,7 @@ register = template.Library()
 @register.tag
 def switch(parser, token):
     """
-    Switch tag.  Usage::
+    Switch tag. Usage::
 
       {% switch meal %}
         {% case "spam" %}...{% endcase %}
