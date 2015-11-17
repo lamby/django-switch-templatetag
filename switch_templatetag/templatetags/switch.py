@@ -18,7 +18,13 @@ def switch(parser, token):
     Note that ``{% case %}`` arguments can be variables if you like (as can
     switch arguments, buts that's a bit silly).
 
-    The default case is optional.
+    The default case is optional. If you wish to fail if nothing matched, you
+    can use::
+
+        {% switch meal %}
+            {% default %}
+              {% error %}
+        {% endswitch %}
     """
     # Parse out the arguments.
     args = token.split_contents()
