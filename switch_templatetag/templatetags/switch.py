@@ -59,9 +59,6 @@ def switch(parser, token):
 def case(parser, token):
     args = token.split_contents()
 
-    # We deliberately allow {% case %} (ie. match nothing)
-    assert len(args) >= 1
-
     # Same dance as above, except this time we care about all the child nodes
     children = parser.parse(('endcase',))
 
