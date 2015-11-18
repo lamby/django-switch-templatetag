@@ -6,7 +6,7 @@ setup(
     name='django-switch-templatetag',
 
     url="https://chris-lamb.co.uk/projects/django-switch-templatetag",
-    version='2.0.1',
+    version='2.0.2',
     description="Simple switch tag for Django templates.",
 
     author="Chris Lamb",
