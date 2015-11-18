@@ -30,6 +30,7 @@ def switch(parser, token):
       {% endswitch %}
 
     """
+
     # Parse out the arguments.
     args = token.split_contents()
 
