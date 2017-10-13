@@ -2,6 +2,7 @@ from django import template
 
 register = template.Library()
 
+
 @register.tag
 def switch(parser, token):
     """
@@ -56,6 +57,7 @@ def switch(parser, token):
 
     return SwitchNode(parser.compile_filter(args[1]), casenodes, default)
 
+
 @register.tag
 def case(parser, token):
     args = token.split_contents()
@@ -69,6 +71,7 @@ def case(parser, token):
         [parser.compile_filter(x) for x in args[1:]],
         children,
     )
+
 
 class SwitchNode(template.Node):
     def __init__(self, value, cases, default):
@@ -87,6 +90,7 @@ class SwitchNode(template.Node):
 
         # No matches; render the default
         return self.default.render(context)
+
 
 class CaseNode(template.Node):
     def __init__(self, values, childnodes):
