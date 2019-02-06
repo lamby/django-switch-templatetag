@@ -12,7 +12,7 @@ Then either:
 
  * Add ``switch_templatetag`` to ``settings.INSTALLED_APPS`` and then use::
 
-     {% load switch_templatetag %}
+     {% load switch %}
 
    ... in your templates.
 
